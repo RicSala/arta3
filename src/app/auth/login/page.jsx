@@ -3,14 +3,18 @@
 import { useForm } from 'react-hook-form';
 import { isEmail } from '../../../../utils/validations';
 import { useContext, useState } from 'react';
-import { AuthContext } from '@/contexts/auth/AuthProvider';
+import { useRouter } from 'next/navigation'
+
 import { getSession, signIn } from "next-auth/react";
+import { AuthContext } from '../../../../contexts/auth/AuthProvider';
 
 
 
 
 const LoginPage = (props) => {
 
+
+    const router = useRouter();
     const [showError, setShowError] = useState(false);
     const [error, setError] = useState(false); // TODO: why do need this?
 
@@ -20,11 +24,8 @@ const LoginPage = (props) => {
 
     const { register, handleSubmit, formState: { errors }, setValue, getValues, watch } = useForm({
         defaultValues: {
-            name: 'Ricardo',
-            email: 'ricardo@grouz.io',
-            city: 'Zaragoza',
+            email: 'ricardo@google.com',
             password: '88888888',
-            confirmPassword: '88888888',
         }
     });
 
@@ -34,18 +35,22 @@ const LoginPage = (props) => {
 
         setShowError(false);
 
-        try {
-            await signIn('credentials', {
-                email,
-                password,
-                callbackUrl: 'http://localhost:3000/tatuadores'
-            });
+        const res = await signIn('credentials', {
+            email,
+            password,
+            redirect: false,
+            // callbackUrl: 'http://localhost:3000/tatuadores'
+        });
 
-        } catch (error) {
-            console.log('error', error.message);
+        if (res?.error) {
+
+            setShowError(true);
+            setError("Credenciales incorrectas");
+            setTimeout(() => { setShowError(false) }, 3000);
+        } else {
+            router.push('/tatuadores');
         }
     }
-
 
     return (
 
@@ -55,7 +60,9 @@ const LoginPage = (props) => {
             onSubmit={handleSubmit(onSubmitForm)}
         >
 
-            {showError && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            {showError && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+
+                role="alert">
                 <strong className="font-bold">Error!</strong>
                 <span className="block sm:inline"> {error}</span>
                 <span className="absolute top-0 bottom-0 right-0 px-4 py-3">

@@ -1,10 +1,13 @@
 // [...nextauth] means that any route after /api/auth/ will be handled by this file, even if it has multiple segments.
-
+// REVIEW: I think this is in the clien, so the use of checkUserEmail and checkOauthUser 
+// here can be problematic because they are database functions (they use mongoose)
 
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import Credentials from "next-auth/providers/credentials" // provider for custom login with email and password
-import { checkUserEmailPassword } from "../../../database/dbUsers"
+import GoogleProvider from "next-auth/providers/google"
+
+import { checkOauthUser, checkUserEmailPassword } from "../../../database/dbUsers"
 
 // authOptions is the configuration object for next-auth where you can configure the authentication providers
 export const authOptions = {
@@ -33,19 +36,21 @@ export const authOptions = {
             }
         }),
 
-        // // github provider
-        // GithubProvider({
-        //     clientId: process.env.GITHUB_ID,
-        //     clientSecret: process.env.GITHUB_SECRET,
-        // }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        }),
+
 
     ],
 
     // custom pages
     pages: {
-        signIn: '/auth/login',
+        signIn: '/',
         newUser: '/auth/register',
     },
+
+    debug: process.env.NODE_ENV === "development",
 
     jwt: {
         // secret: process.env.JWT_SECRET, // deprecated
@@ -57,6 +62,10 @@ export const authOptions = {
         updateAge: 24 * 60 * 60, // 24 hours
     },
 
+
+
+    // REVIEW: I am gonna remove the callbacks and use the jwt and session default callbacks
+    secret: process.env.NEXTAUTH_SECRET,
 
     // callbacks
     callbacks: {
@@ -79,8 +88,8 @@ export const authOptions = {
 
                     case 'oauth':
                         // console.log("oauth", { account })
-                        token.user = await dbUsers.checkOauthUser(user.email, user.name);
-                        // console.log("token.user", token.user)
+                        token.user = await checkOauthUser(user.email, user.name, user.image);
+                        console.log("token.user", token.user)
 
                         break;
 

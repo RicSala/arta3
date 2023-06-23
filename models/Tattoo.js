@@ -31,10 +31,26 @@ const tattooSchema = new Schema({
     },
 
     author: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: [true, 'El autor es obligatorio'],
-
     },
+
+
+    comments: {
+        type: [{
+            user: String,
+            comment: String,
+            createdAt: Date,
+        }],
+        default: [],
+    },
+
+    likes: {
+        type: Number,
+        default: 0,
+    },
+
 
 }, {
     timestamps: true,

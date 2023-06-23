@@ -105,7 +105,26 @@ export const initialData = {
             images: ["https://d1kq2dqeox7x40.cloudfront.net/images/posts/20190630_jvxwjC5LJSVqA2e.png", "https://d1kq2dqeox7x40.cloudfront.net/images/posts/20190630_jvxwjC5LJSVqA2e.png"],
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae nisl. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae nisl.",
             author: "Tatuador 1",
-            timestamp: "2021-01-01"
+            timestamp: "2021-01-01",
+            likes: 300,
+            comments: [
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+            ]
+
         },
         {
             // id: 2,
@@ -113,7 +132,25 @@ export const initialData = {
             images: ["https://d1kq2dqeox7x40.cloudfront.net/images/posts/20190630_jvxwjC5LJSVqA2e.png", "https://d1kq2dqeox7x40.cloudfront.net/images/posts/20190630_jvxwjC5LJSVqA2e.png"],
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae nisl. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae nisl.",
             author: "Tatuador 2",
-            timestamp: "2021-01-01"
+            timestamp: "2021-01-01",
+            likes: 300,
+            comments: [
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+            ]
         },
         {
             // id: 3,
@@ -121,7 +158,25 @@ export const initialData = {
             images: ["https://d1kq2dqeox7x40.cloudfront.net/images/posts/20190630_jvxwjC5LJSVqA2e.png", "https://d1kq2dqeox7x40.cloudfront.net/images/posts/20190630_jvxwjC5LJSVqA2e.png"],
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae nisl. Nulla euismod, nisl vitae aliquam ultricies, nunc nisl ultricies nunc, vitae aliquam nisl nisl vitae nisl.",
             author: "Tatuador 3",
-            timestamp: "2021-01-01"
+            timestamp: "2021-01-01",
+            likes: 300,
+            comments: [
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+                {
+                    user: "user1",
+                    comment: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ",
+                    createdAt: "2021-01-01"
+                },
+            ]
         }
     ],
 

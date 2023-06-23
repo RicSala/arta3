@@ -1,7 +1,7 @@
 'use client'
 
-import { AuthContext } from "@/contexts/auth/AuthProvider"
 import { useContext } from "react"
+import { AuthContext } from "../contexts/auth/AuthProvider"
 
 
 export default function SignoutButton(props) {

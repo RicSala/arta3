@@ -14,6 +14,11 @@ const nextConfig = {
                     protocol: 'https',
                     hostname: 'd1kq2dqeox7x40.cloudfront.net',
                 },
+                {
+                    protocol: 'https',
+                    hostname: 'lh3.googleusercontent.com',
+                }
+
 
             ]
     }

@@ -10,16 +10,15 @@ const mongoConnection = {
     isConnected: 0
 }
 
-
 export const connect = async () => {
 
     if (mongoConnection.isConnected) {
+        // console.log('Ya estabamos conectados');
         return;
     }
 
-
-    if (mongoose.connections.length > 0) {
-        mongoConnection.isConnected = mongoose.connections[0].readyState; // we only check the first connection, there could be more but we only have one in this project
+    if (mongoose.connections && mongoose.connections.length > 0) {
+        mongoConnection.isConnected = mongoose.connections[0].readyState;
 
         if (mongoConnection.isConnected === 1) {
             // console.log('Usando conexión anterior');
@@ -33,7 +32,6 @@ export const connect = async () => {
     mongoConnection.isConnected = 1;
     // console.log('Conectado a MongoDB:', process.env.MONGO_URL);
 }
-
 
 export const disconnect = async () => {
     // if we are in development mode, we do not disconnect

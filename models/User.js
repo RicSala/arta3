@@ -12,20 +12,24 @@ const UserSchema = new Schema({
         required: [true, 'El email es obligatorio'],
         unique: [true, 'El email ya existe'],
     },
+    emailVerified: {
+        type: Date,
+    },
+
     city: {
         type: String,
-        required: [true, 'La ciudad es obligatoria'],
     },
 
     password: {
         type: String,
-        required: [true, 'La contraseña es obligatoria'],
+        // Password cannot be retrieved, otherwise we cound't use google auth
+        // required: [true, 'La contraseña es obligatoria'],
         minlength: [6, 'La contraseña debe tener al menos 6 caracteres'],
     },
 
     confirmPassword: {
         type: String,
-        required: [true, 'La confirmación de contraseña es obligatoria'],
+        // required: [true, 'La confirmación de contraseña es obligatoria'],
         validate: {
             validator: function (el) {
                 return el === this.password;
@@ -99,7 +103,22 @@ const UserSchema = new Schema({
         type: [String],
     },
 
-});
+    favoriteIds: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Tattoo',
+    },
+
+    tattoos: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Tattoo',
+    }
+
+
+},
+    {
+        timestamps: true,
+    }
+);
 
 
 let User;

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import User from "../../../../../models/User";
 import { connect, disconnect } from "../../../../../database/db";
 import { isValidEmail } from "../../../../../utils/validations";
+import User from "../../../../../models/User";
 
 export async function GET(req) {
 
@@ -50,13 +50,6 @@ export async function POST(req) {
     }
 
 
-
-
-    console.log(user)
-
-
-
-
     connect();
 
     // check if user exists
@@ -102,3 +95,4 @@ export async function POST(req) {
     });
 
 }
+

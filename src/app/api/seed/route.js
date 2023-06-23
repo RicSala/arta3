@@ -27,7 +27,17 @@ export async function GET(req) {
         // await Product.deleteMany({});
         // await Order.deleteMany({});
         await User.insertMany(initialData.users);
-        await Tattoo.insertMany(initialData.tattoos);
+
+        // find a randome user with role artist 
+
+        const user = await User.findOne({ role: 'artist' });
+
+        const tattoos = initialData.tattoos.map(tattoo => {
+            return { ...tattoo, author: user._id }
+        })
+
+
+        await Tattoo.insertMany(tattoos);
         // await Product.insertMany(database.initialData.products);
 
         await disconnect();

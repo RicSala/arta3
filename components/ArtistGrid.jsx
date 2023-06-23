@@ -5,7 +5,7 @@ export function ArtistGrid({ artists }) {
         <div className="grid grid-cols-3 gap-4">
             {
                 artists.map((artist, index) => {
-                    return <ArtistCard key={artist.url} artist={artist} />
+                    return <ArtistCard key={artist._id} artist={artist} />
                 }
                 )
             }

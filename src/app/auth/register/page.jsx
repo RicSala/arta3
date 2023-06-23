@@ -3,8 +3,8 @@
 import { useForm } from 'react-hook-form';
 import { isEmail } from '../../../../utils/validations';
 import { useContext, useState } from 'react';
-import { AuthContext } from '@/contexts/auth/AuthProvider';
 import { getSession, signIn } from "next-auth/react";
+import { AuthContext } from '../../../../contexts/auth/AuthProvider';
 
 
 
@@ -30,9 +30,7 @@ const RegisterPage = (props) => {
 
     const onSubmitForm = async (formData) => {
         setShowError(false);
-        console.log('formData', formData);
         const data = await registerUser(formData);
-        console.log('resp', data);
         if (data.hasError) {
             setShowError(true);
             setError(data.error);

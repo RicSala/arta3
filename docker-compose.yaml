@@ -16,5 +16,5 @@ services:
     volumes:
       - ./mongo:/data/db
 
-# To create the container from the terminal run:
+# To mount the container from the terminal run:
 # docker-compose up -d
