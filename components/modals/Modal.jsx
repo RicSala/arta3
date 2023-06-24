@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
 
@@ -21,6 +21,9 @@ const Modal = (
 
     const [showModal, setShowModal] = useState(isOpen);
 
+    const modalRef = useRef();
+
+
     useEffect(() => {
         setShowModal(isOpen);
     }, [isOpen]);
@@ -32,6 +35,17 @@ const Modal = (
             onClose();
         }, 300);
     }, [disabled, onClose]);
+
+    const handleOutsideClick = (event) => {
+        console.log("CLICK OUTSIDE", event.target)
+        console.log("MODAL REF", modalRef.current)
+        console.log("MODAL REF CONTAINS", modalRef.current.contains(event.target))
+        // console.log if modalRef.current IS event.target
+        console.log("MODAL REF IS EVENT TARGET", modalRef.current === event.target)
+        if (!modalRef.current.contains(event.target) || modalRef.current === event.target) {
+            handleClose();
+        }
+    };
 
     const handleSubmit = useCallback(() => {
         if (disabled) return;
@@ -49,7 +63,10 @@ const Modal = (
 
     return (
         <>
-            <div className="
+            <div
+                onClick={handleOutsideClick}
+                ref={modalRef}
+                className="
             justify-center
             items-center
             flex

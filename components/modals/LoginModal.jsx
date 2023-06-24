@@ -4,7 +4,7 @@ import axios from 'axios';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm, FieldValues } from 'react-hook-form';
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import Modal from './Modal';
 import { BiHeading } from 'react-icons/bi';
 import Heading from '../Heading';
@@ -19,7 +19,15 @@ const LoginModal = ({ }) => {
 
     const router = useRouter();
 
-    const { LoginModalisOpen, onCloseLoginModal, onOpenLoginModal } = useContext(UiContext);
+    const { LoginModalisOpen, onCloseLoginModal, onOpenLoginModal, onOpenRegisterModal } = useContext(UiContext);
+
+    const toggleModal = useCallback(
+        () => {
+            onCloseLoginModal();
+            onOpenRegisterModal();
+        }
+        , [onCloseLoginModal, onOpenRegisterModal]);
+
 
     const [isLoading, setIsLoading] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -98,15 +106,15 @@ const LoginModal = ({ }) => {
             ">
                 <div className='
                 flex flex-row justify-center items-center gap-2'>
-                    <div>¿Ya tienes una cuenta?</div>
+                    <div>¿No tienes una cuenta?</div>
                     <div
-                        onClick={onCloseLoginModal}
+                        onClick={toggleModal}
                         className="
                     text-neutral-800
                     cursor-pointer
                     hover:underline
                     "
-                    >Log in</div>
+                    >¡Regístrate!</div>
 
                 </div>
 

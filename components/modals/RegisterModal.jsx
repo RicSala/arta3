@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm, FieldValues } from 'react-hook-form';
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import Modal from './Modal';
 import { BiHeading } from 'react-icons/bi';
 import Heading from '../Heading';
@@ -15,7 +15,7 @@ import { signIn } from 'next-auth/react';
 
 const RegisterModal = ({ }) => {
 
-    const { RegisterModalisOpen, onCloseRegisterModal, onOpenRegisterModal } = useContext(UiContext);
+    const { RegisterModalisOpen, onCloseRegisterModal, onOpenRegisterModal, onOpenLoginModal } = useContext(UiContext);
 
     const [isLoading, setIsLoading] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -44,6 +44,14 @@ const RegisterModal = ({ }) => {
                 toast.success('¡Bienvenido a Tattuo! 🎉');
             })
     };
+
+
+    const toggleModal = useCallback(
+        () => {
+            onCloseRegisterModal();
+            onOpenLoginModal();
+        }
+        , [onCloseRegisterModal, onOpenLoginModal]);
 
     const bodyContent = (
         <div className='flex flex-col gap-4'>
@@ -110,7 +118,7 @@ const RegisterModal = ({ }) => {
                 flex flex-row justify-center items-center gap-2'>
                     <div>¿Ya tienes una cuenta?</div>
                     <div
-                        onClick={onCloseRegisterModal}
+                        onClick={toggleModal}
                         className="
                     text-neutral-800
                     cursor-pointer

@@ -25,6 +25,18 @@ export const uiReducer = (state, action) => {
         ...state,
         LoginModalisOpen: false,
       };
+    case '[UI] - onOpen Rent modal':
+      return {
+        ...state,
+        RentModalisOpen: true,
+      };
+
+    case '[UI] - onClose Rent modal':
+      console.log("CLOSING Rent MODAL")
+      return {
+        ...state,
+        RentModalisOpen: false,
+      };
 
 
     default:

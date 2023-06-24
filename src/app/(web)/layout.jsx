@@ -2,6 +2,7 @@ import Footer from "../../../components/Footer";
 import LoginModal from "../../../components/modals/LoginModal";
 import Modal from "../../../components/modals/Modal";
 import RegisterModal from "../../../components/modals/RegisterModal";
+import RentModal from "../../../components/modals/RentModal";
 import NavBar from "../../../components/navBar/NavBar";
 import ToasterProvider from "../../../contexts/toaster/ToasterProvider";
 import getCurrentUser from "../actions/getCurrentUser";
@@ -18,6 +19,7 @@ export default async function DashboardLayout({ children }) {
             <div className="flex flex-col flex-grow">
                 <ToasterProvider />
                 <LoginModal />
+                <RentModal />
                 <RegisterModal />
                 <NavBar currentUser={currentUser} />
                 <div className="p2 w-full  text-slate-900">

@@ -11,21 +11,30 @@ export const UserMenu = ({
     currentUser,
 }) => {
 
-    console.log("CURRENT USER FROM USER MENU", currentUser)
-
+    const { onOpenRegisterModal, onOpenLoginModal, onOpenRentModal } = useContext(UiContext);
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleOpen = useCallback(() => {
         setIsOpen((prev) => !prev)
     }, [])
 
-    const { onOpenRegisterModal, onOpenLoginModal, } = useContext(UiContext);
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            onOpenLoginModal();
+            return;
+        }
+
+        // open rent modal
+        console.log("OPENING RENT MODAL")
+        onOpenRentModal();
+    }, [currentUser, onOpenLoginModal, onOpenRentModal])
+
 
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div
-                    onClick={() => { }}
+                    onClick={onRent}
                     className="
                     hidden
                     md:block
@@ -111,7 +120,7 @@ export const UserMenu = ({
                                     label="Mi perfil"
                                 />
                                 <MenuItem
-                                    onClick={() => { }}
+                                    onClick={onOpenRentModal}
                                     label="Airbnb my home"
                                 />
                                 <hr />

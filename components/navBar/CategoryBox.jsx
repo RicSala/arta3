@@ -1,6 +1,36 @@
 'use client'
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
+import qs from "query-string";
+
+// TODO: I am gonna try to do it like this, but I am not sure if this is gonna work
+// UPDATE: It works, but I am not sure if it is safe, so I am gonna use qs library
+
+const getAllQueryParams = (params) => {
+    let query = {};
+    let paramkeys = [
+        'category',
+    ]
+
+    paramkeys.forEach((key) => {
+        params.get(key) && (query[key] = params.get(key));
+    });
+    return query;
+}
+
+
+// given a query object, return a string of query params, skipping null values
+const getQueryString = (query) => {
+    let queryString = '';
+    Object.keys(query).forEach((key) => {
+        if (query[key]) {
+            queryString += `${key}=${query[key]}&`;
+        }
+    });
+    return queryString;
+}
+
 
 const CategoryBox = ({
     label,
@@ -12,8 +42,49 @@ const CategoryBox = ({
     const router = useRouter();
     const params = useSearchParams();
 
+    // TODO: Actually I don't want to do it with params but with url query. I guess I will have to do something like /categories/[cat] and create a page 
+    const handleCategoryClick = useCallback(() => {
+
+
+
+        let currentQuery = {};
+
+        if (params) {
+            // currentQuery = getAllQueryParams(params);
+            currentQuery = qs.parse(params.toString());
+        }
+
+        const updatedQuery = {
+            ...currentQuery,
+            category: label,
+        };
+
+        if (params?.get("category") === label) { // If the category is already selected, we remove it from the query on click
+            delete updatedQuery.category;
+        }
+
+        console.log(updatedQuery);
+
+        // const url = `/tatuadores?${getQueryString(updatedQuery)}`;
+        const url = qs.stringifyUrl({
+            url: '/tatuadores',
+            query: updatedQuery,
+        },
+            { skipNull: true }
+        );
+
+
+        console.log("URL", url)
+
+        router.push(url);
+
+    }, [label, params, router]);
+
     return (
-        <div className={`
+        <div
+
+            onClick={handleCategoryClick}
+            className={`
             flex
             flex-col
             items-center

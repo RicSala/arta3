@@ -12,6 +12,7 @@ export const UiContext = createContext()
 const UI_INITIAL_STATE = {
     RegisterModalisOpen: false,
     LoginModalisOpen: false,
+    RentModalisOpen: false,
 };
 
 // Instead of using Zustand, we can use useReducer
@@ -35,6 +36,15 @@ export const UiProvider = ({ children }) => {
         dispatch({ type: '[UI] - onClose Login modal' });
     };
 
+    const onOpenRentModal = () => {
+        console.log("OPENING RENT MODAL FROM UI CONTEXT")
+        dispatch({ type: '[UI] - onOpen Rent modal' });
+    };
+
+    const onCloseRentModal = () => {
+        dispatch({ type: '[UI] - onClose Rent modal' });
+    };
+
     // We return the state and the methods so we can use them in the components
     return (
         <UiContext.Provider value={{
@@ -46,6 +56,8 @@ export const UiProvider = ({ children }) => {
             onCloseRegisterModal,
             onOpenLoginModal,
             onCloseLoginModal,
+            onOpenRentModal,
+            onCloseRentModal,
         }}>
             {children}
         </UiContext.Provider>
