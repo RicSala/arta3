@@ -1,13 +1,18 @@
+'use client'
 
 import { useMemo } from "react";
-import { categories } from "../../../../components/navBar/Categories";
-import Container from "../../../../components/Container";
-import ListingHead from "../../../../components/listings/ListingHead";
+import { categories } from "../navBar/Categories";
+import Container from "../Container";
+import ListingHead from "./ListingHead";
 
 const ListingClient = ({
     listing,
     currentUser
 }) => {
+
+    const category = useMemo(() => {
+        return categories.find(category => category._id === listing.categoryId);
+    }, [listing]);
 
     return (
         <Container>

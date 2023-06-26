@@ -2,7 +2,7 @@ import getListingById from "@/app/actions/getListingById";
 import ClientOnly from "../../../../components/ClientOnly";
 import EmptyState from "../../../../components/EmptyState";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import ListingClient from "./ListingClient";
+import ListingClient from "../../../../components/listings/ListingClient";
 import TestComponent from "../../../../components/listings/TestComponent";
 
 const listingPage = async ({ params }) => {

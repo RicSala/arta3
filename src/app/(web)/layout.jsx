@@ -1,4 +1,3 @@
-import Footer from "../../../components/Footer";
 import LoginModal from "../../../components/modals/LoginModal";
 import Modal from "../../../components/modals/Modal";
 import RegisterModal from "../../../components/modals/RegisterModal";
