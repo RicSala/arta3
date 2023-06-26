@@ -6,7 +6,6 @@ import { connect, disconnect } from "../../../database/db";
 
 export async function getSession() {
     const session = await getServerSession(authOptions);
-    console.log("SESSION", session)
     return session;
 }
 
@@ -18,9 +17,9 @@ export default async function getCurrentUser() {
         const session = await getSession();
         if (!session?.user?.email) return null;
 
-        connect();
+        await connect();
         const currentUser = await User.findOne({ email: session.user.email });
-        disconnect();
+        await disconnect();
 
         if (!currentUser) return null;
 

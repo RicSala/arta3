@@ -9,8 +9,6 @@ export default function Avatar(props) {
 
     const { user } = useContext(AuthContext)
 
-    console.log("USER FROM AVATAR", user)
-
     return (
         <div className="rounded-full h-8 w-8 flex items-center justify-center bg-gray-400">
             {/* if user has a profile Pic, show it instead */}

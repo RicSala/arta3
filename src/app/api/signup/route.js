@@ -7,7 +7,6 @@ import { connect, disconnect } from '../../../../database/db';
 
 export async function GET(req) {
 
-    // console.log({ method: req.method, url: req.url })
 
     return NextResponse.json({ count: 100 });
 
@@ -25,7 +24,6 @@ export async function POST(req) {
         confirmPassword
     }
 
-    console.log({ user })
 
 
     // VALIDATIONS ##############################
@@ -54,7 +52,7 @@ export async function POST(req) {
     //     return NextResponse.json({ status: 'ERROR', error: 'Las contraseñas no coinciden' });
     // }
 
-    connect();
+    await connect();
 
     // check if user exists
     const userExists = await User.findOne({ email });
@@ -91,7 +89,7 @@ export async function POST(req) {
 
 
 
-    disconnect();
+    await disconnect();
 
     return NextResponse.json({
         user: newUser

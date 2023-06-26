@@ -4,11 +4,11 @@ import bcrypt from 'bcryptjs';
 
 export const getTattooById = async (id) => {
 
-    connect();
+    await connect();
 
     const tattoo = Tattoo.findById(id);
 
-    disconnect();
+    await disconnect();
 
     return tattoo;
 

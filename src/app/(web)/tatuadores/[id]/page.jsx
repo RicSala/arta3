@@ -48,7 +48,6 @@ const ArtistDetailsPage = async ({ params }) => {
                 <h2>Otras piezas de {artist.name}</h2>
 
                 <div className="flex min-w-full gap-0">
-                    <TattooGrid tattoos={tattos} />
                 </div>
 
             </div >

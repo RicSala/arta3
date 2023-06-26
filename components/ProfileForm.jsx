@@ -31,8 +31,6 @@ export function ProfileForm({ user }) {
 
             const res = await axios.put(`/api/users/${user._id}`, formData);
 
-            // console.log(res);
-
         } catch (error) {
 
             console.log(error);

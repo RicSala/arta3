@@ -17,8 +17,6 @@ const Modal = (
         secondaryActionLabel, }
 ) => {
 
-    console.log("TITLE", { title })
-
     const [showModal, setShowModal] = useState(isOpen);
 
     const modalRef = useRef();
@@ -37,11 +35,6 @@ const Modal = (
     }, [disabled, onClose]);
 
     const handleOutsideClick = (event) => {
-        console.log("CLICK OUTSIDE", event.target)
-        console.log("MODAL REF", modalRef.current)
-        console.log("MODAL REF CONTAINS", modalRef.current.contains(event.target))
-        // console.log if modalRef.current IS event.target
-        console.log("MODAL REF IS EVENT TARGET", modalRef.current === event.target)
         if (!modalRef.current.contains(event.target) || modalRef.current === event.target) {
             handleClose();
         }

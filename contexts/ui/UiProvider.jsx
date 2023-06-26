@@ -37,7 +37,6 @@ export const UiProvider = ({ children }) => {
     };
 
     const onOpenRentModal = () => {
-        console.log("OPENING RENT MODAL FROM UI CONTEXT")
         dispatch({ type: '[UI] - onOpen Rent modal' });
     };
 

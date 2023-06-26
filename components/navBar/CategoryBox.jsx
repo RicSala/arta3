@@ -63,18 +63,14 @@ const CategoryBox = ({
             delete updatedQuery.category;
         }
 
-        console.log(updatedQuery);
-
         // const url = `/tatuadores?${getQueryString(updatedQuery)}`;
         const url = qs.stringifyUrl({
-            url: '/tatuadores',
+            url: '/',
             query: updatedQuery,
         },
             { skipNull: true }
         );
 
-
-        console.log("URL", url)
 
         router.push(url);
 

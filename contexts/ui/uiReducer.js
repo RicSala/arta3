@@ -20,7 +20,6 @@ export const uiReducer = (state, action) => {
       };
 
     case '[UI] - onClose Login modal':
-      console.log("CLOSING LOGIN MODAL")
       return {
         ...state,
         LoginModalisOpen: false,
@@ -32,7 +31,6 @@ export const uiReducer = (state, action) => {
       };
 
     case '[UI] - onClose Rent modal':
-      console.log("CLOSING Rent MODAL")
       return {
         ...state,
         RentModalisOpen: false,

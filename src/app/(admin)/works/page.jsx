@@ -20,18 +20,13 @@ const MyWorks = async (props) => {
 
     const id = session.user._id;
 
-    // console.log(id)
-
     const tattoos = await getTattoosByArtistId(id)
-
-    // console.log(tattoos)
 
     // REVIEW: Another way to do it would be to use a useEffect hook to fetch the data. It would be faster and we could use the loading state.
 
     return (
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2" >
             <h1 className="mb-8 text-3xl text-center">Tatuajes</h1>
-            <TattooGrid tattoos={tattoos} />
         </div >
     )
 

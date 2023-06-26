@@ -5,8 +5,6 @@ import User from "../../../../../models/User";
 
 export async function GET(req) {
 
-    // console.log({ method: req.method, url: req.url })
-
     return NextResponse.json({ count: 100 });
 
 }
@@ -50,7 +48,7 @@ export async function POST(req) {
     }
 
 
-    connect();
+    await connect();
 
     // check if user exists
     const userExists = await User.findOne({ email });
@@ -87,7 +85,7 @@ export async function POST(req) {
 
 
 
-    disconnect();
+    await disconnect();
 
     return NextResponse.json({
         user: newUser

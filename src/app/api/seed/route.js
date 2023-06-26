@@ -62,7 +62,6 @@ export async function GET(req) {
 // async function handler(req) {
 //     // only allow purge requests
 //     if (req.method !== 'PURGE') {
-//         console.log("Error seeding the database");
 //         return NextResponse.json({ status: 'ERROR', error: 'Your are not allowed to do that' });
 //     }
 
@@ -81,13 +80,11 @@ export async function GET(req) {
 
 //         await disconnect();
 
-//         console.log("Database seeded");
 
 //         return NextResponse.json({ count: 101 });
 
 //     } catch (error) {
 
-//         console.log("Error seeding the database", error);
 
 //         return NextResponse.json({ status: 'ERROR' });
 //     }

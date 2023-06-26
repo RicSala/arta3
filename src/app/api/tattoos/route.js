@@ -6,11 +6,10 @@ export async function GET(req) {
 
 
     // get from the database all the tattoos
-    connect();
+    await connect();
     const tattoos = await Tattoo.find({});
-    disconnect();
+    await disconnect();
 
-    // console.log(tattoos)
     return NextResponse.json(tattoos);
 
 }
@@ -19,7 +18,7 @@ export async function POST(req) {
 
 
 
-    connect();
+    await connect();
 
     // create a new listing in the database
     const listing = await Listing.create({
@@ -31,7 +30,7 @@ export async function POST(req) {
 
     });
 
-    disconnect();
+    await disconnect();
 
     return NextResponse.json({ count: 100 });
 

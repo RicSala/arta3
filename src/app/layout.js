@@ -6,6 +6,11 @@ import ClientSessionProvider from '../../utils/SessionProvider'
 import { Nunito } from "next/font/google"
 import { AuthProvider } from '../../contexts/auth/AuthProvider'
 import { UiProvider } from '../../contexts/ui/UiProvider'
+import ToasterProvider from '../../contexts/toaster/ToasterProvider'
+import LoginModal from '../../components/modals/LoginModal'
+import RentModal from '../../components/modals/RentModal'
+import RegisterModal from '../../components/modals/RegisterModal'
+import getCurrentUser from './actions/getCurrentUser'
 
 
 export const metadata = {
@@ -19,14 +24,24 @@ const font = Nunito({
 
 
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
       <body className={font.className}>
         <ClientSessionProvider>
           <AuthProvider>
             <UiProvider>
-              {children}
+              <ToasterProvider />
+              <LoginModal />
+              <RentModal />
+              <RegisterModal />
+              <NavBar currentUser={currentUser} />
+              <div className="pb-20 pt-28 w-full  text-slate-900">
+                {children}
+              </div>
             </UiProvider>
           </AuthProvider>
         </ClientSessionProvider>

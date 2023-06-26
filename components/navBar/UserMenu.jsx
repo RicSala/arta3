@@ -24,8 +24,6 @@ export const UserMenu = ({
             return;
         }
 
-        // open rent modal
-        console.log("OPENING RENT MODAL")
         onOpenRentModal();
     }, [currentUser, onOpenLoginModal, onOpenRentModal])
 

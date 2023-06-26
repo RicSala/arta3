@@ -4,9 +4,9 @@ import EditTattooButton from "./EditTattooButton";
 
 export function TattooCard({ tattoo }) {
     return (
-        <div className="">
-            <Link href={`/tatuajes/${tattoo._id}`} className="relative group">
-                <Image src={tattoo.images[0]} alt="test" width={500} height={500} className="rounded-2xl"
+        <Link href={`/tatuajes/${tattoo._id}`} className="relative group">
+            <div className="rounded-md flex flex-col">
+                <Image src={tattoo.images[0]} alt="test" width={700} height={900}
                     priority={true} // TODO: Priority should be only the ones above the fold
                 />
                 {/* Add a edit button */}
@@ -16,7 +16,7 @@ export function TattooCard({ tattoo }) {
                     JSON.parse(JSON.stringify(tattoo))
 
                 } />
-            </Link>
-        </div>
+            </div>
+        </Link>
     )
 }

@@ -23,13 +23,6 @@ const handler = NextAuth({
 
                 return await checkUserEmailPassword(credentials.email, credentials.password)
 
-                // console.log("credentials", credentials)
-                // return {
-                //     name: "John Doe",
-                //     email: "ricardo@google.com",
-                //     role: "admin"
-                // }
-
             }
         }),
 
@@ -68,19 +61,15 @@ const handler = NextAuth({
         // that we will add to the token object
         async jwt({ token, account, user }) {
 
-            // console.log('JWT Callback:', { token, account, user });
 
             // acount exists only when the user is authenticated, not when the token is refreshed
             // so we are basically initializing the token with the account data
             if (account) {
-                // console.log("account", { account })
                 token.accessToken = account.access_token;
                 switch (account.type) {
 
                     case 'oauth':
-                        // console.log("oauth", { account })
                         token.user = await checkUserEmailPassword(user.email, user.name);
-                        // console.log("token.user", token.user)
 
                         break;
 
@@ -98,7 +87,6 @@ const handler = NextAuth({
         // for customizing the session object that will be sent to the client.
         async session({ session, token, user }) {
 
-            // console.log('Session Callback:', { session, token, user });
 
             try {
                 session.accessToken = token.accessToken;
