@@ -9,7 +9,7 @@ import Container from "../Container";
 import Categories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
-import { UserMenu } from "./UserMenu";
+import UserMenu from "./UserMenu";
 
 // const menuItems = [
 //     {
@@ -60,8 +60,8 @@ async function NavBar({
                         <Logo />
                         <Search />
                         <UserMenu currentUser={
-                            // JSON.parse(JSON.stringify(currentUser))
-                            currentUser
+                            JSON.parse(JSON.stringify(currentUser))
+                            // currentUser
                         } />
                     </div>
                 </Container>

@@ -4,16 +4,20 @@ import EmptyState from "../../../../components/EmptyState";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ListingClient from "../../../../components/listings/ListingClient";
 import TestComponent from "../../../../components/listings/TestComponent";
+import ListingInfo from "../../../../components/listings/ListingInfo";
+import Container from "../../../../components/Container";
 
-const listingPage = async ({ params }) => {
+const ListingPage = async ({ params }) => {
 
     const listing = await getListingById(params);
     const currentUser = await getCurrentUser();
 
+    console.log("RENDERING LISTING PAGE")
+
     if (!listing) {
         return (
             <ClientOnly>
-                <EmptyState message="No se han encontrado resultados" />
+                <EmptyState title="No se han encontrado resultados" />
             </ClientOnly >
         )
     }
@@ -26,13 +30,8 @@ const listingPage = async ({ params }) => {
                 currentUser={currentUser}
             />
 
-            <TestComponent
-                listing={listing}
-                currentUser={currentUser}
-            />
-
         </>
     )
 };
 
-export default listingPage;
+export default ListingPage;

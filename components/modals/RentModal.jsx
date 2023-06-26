@@ -6,7 +6,6 @@ import Modal from "./Modal";
 import Heading from "../Heading";
 import { categories } from "../navBar/Categories";
 import Image from "next/image";
-import { CategoryInput } from "../inputs/CategoryInput";
 import { useForm } from "react-hook-form";
 import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
@@ -16,6 +15,7 @@ import Input from "../inputs/Input";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import CategoryInput from "../inputs/CategoryInput";
 // import Map from "../Map";
 
 // create an enum for the steps

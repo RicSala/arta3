@@ -1,6 +1,6 @@
 'use client'
 
-export const CategoryInput = ({
+const CategoryInput = ({
     onClick,
     selected,
     label,
@@ -32,3 +32,5 @@ export const CategoryInput = ({
         </div>
     )
 };
+
+export default CategoryInput

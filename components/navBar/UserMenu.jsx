@@ -7,7 +7,7 @@ import MenuItem from './MenuItem';
 import { UiContext } from '../../contexts/ui/UiProvider';
 import { signOut } from 'next-auth/react';
 
-export const UserMenu = ({
+const UserMenu = ({
     currentUser,
 }) => {
 
@@ -149,3 +149,5 @@ export const UserMenu = ({
         </div >
     )
 };
+
+export default UserMenu

@@ -8,6 +8,7 @@ export default async function getListingById(
 
     try {
         const { listingId } = params;
+
         await connect();
         // get the listing, populating the user
         const listing = await Listing.findById(listingId).populate("userId");

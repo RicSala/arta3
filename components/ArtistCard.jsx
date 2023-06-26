@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function ArtistCard({ artist }) {
+function ArtistCard({ artist }) {
     return (
         <Link href={`/tatuadores/${artist._id}`}>
             <p>{artist.name}</p>
@@ -11,3 +11,5 @@ export function ArtistCard({ artist }) {
         </Link>
     )
 }
+
+export default ArtistCard
