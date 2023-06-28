@@ -18,6 +18,9 @@ const ListingInfo = ({
 
     const coordinates = getByValue(location)?.latlng;
 
+
+    console.log("ICONO", category.icon)
+
     return (
         <div className="col-span-4 flex flex-col gap-8">
             <div className=" flex flex-col gap-2">
@@ -52,6 +55,7 @@ const ListingInfo = ({
                 </div>
             </div>
             <hr />
+
 
             <ListingCategory
                 icon={category.icon}

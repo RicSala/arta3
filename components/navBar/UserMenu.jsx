@@ -6,10 +6,13 @@ import { useCallback, useContext, useState } from 'react';
 import MenuItem from './MenuItem';
 import { UiContext } from '../../contexts/ui/UiProvider';
 import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const UserMenu = ({
     currentUser,
 }) => {
+
+    const router = useRouter();
 
     const { onOpenRegisterModal, onOpenLoginModal, onOpenRentModal } = useContext(UiContext);
     const [isOpen, setIsOpen] = useState(false)
@@ -102,7 +105,7 @@ const UserMenu = ({
                                     label="My trips"
                                 />
                                 <MenuItem
-                                    onClick={() => { }}
+                                    onClick={() => { router.push('/favorites') }}
                                     label="Mis favoritos"
                                 />
                                 <MenuItem
